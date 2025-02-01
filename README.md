@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Wallet Generator  
 
-## Getting Started
+A powerful and secure wallet generator built with **Next.js**, **TypeScript**, and **TailwindCSS**. This app allows users to generate **public and private keys** and retrieve **Ethereum (ETH)** and **Solana (SOL)** balances seamlessly.  
 
-First, run the development server:
+## ✨ Features  
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- 🔐 **Key Generation:** Generate secure public and private keys for Ethereum and Solana.  
+- 📊 **Balance Retrieval:** Easily retrieve ETH and SOL wallet balances.  
+- 💻 **Modern UI:** Responsive and user-friendly interface powered by TailwindCSS.  
+- ⚡ **Fast Performance:** Built with Next.js for a highly optimized and efficient experience.  
+- 🔒 **Security First:** Handles key generation securely on the client side.  
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠 Tech Stack  
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Framework:** [Next.js](https://nextjs.org/)  
+- **Programming Language:** TypeScript  
+- **Styling:** TailwindCSS  
+- **Blockchain Integration:** Ethereum and Solana API libraries  
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🚀 Installation  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Follow these steps to set up the project locally:  
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Clone the repository:  
+   ```bash
+   git clone https://github.com/anshk4525/wallet-generator.git
+   cd wallet-generator
+   ```
 
-## Deploy on Vercel
+2. Install dependencies:  
+   ```bash
+   npm install
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Create a `.env.local` file for environment variables if required, and configure API keys for blockchain providers.  
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. Run the development server:  
+   ```bash
+   npm run dev
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) to see the app in action.
+
+---
+
+## 📚 Usage  
+
+1. **Generate Wallet:** Click on the "Generate Wallet" button to create public and private keys for ETH or SOL.  
+2. **View Balances:** Enter your wallet address and choose a blockchain (ETH or SOL) to retrieve the current balance.  
+3. **Copy Keys:** Easily copy keys securely for use in other applications.
+
+---
+
+## 📸 Screenshots  
+
+### Wallet Generation  
+(Include screenshot here)  
+
+### Balance Retrieval  
+(Include screenshot here)  
+
+---
+
+## 🔧 Available Scripts  
+
+- **Development Server:**  
+  ```bash
+  npm run dev
+  ```  
+
+- **Build for Production:**  
+  ```bash
+  npm run build
+  ```  
+
+- **Linting:**  
+  ```bash
+  npm run lint
+  ```
+
+---
+
+## 🤝 Contributions  
+
+Contributions, issues, and feature requests are welcome! Feel free to fork the repository and submit pull requests.  
+
+---
+
+## 📄 License  
+
+This project is open-source under the MIT License.  
+
+---
+
+## 🌐 Connect  
+
+Feel free to reach out for collaborations or questions!  
+
+---
+
+Would you like me to suggest better sections, or would you prefer to add any technical details?
