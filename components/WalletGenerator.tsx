@@ -1,6 +1,5 @@
-"use client";
-
-import { useEffect, useState } from "react";
+"use client"
+import {  useState } from "react";
 import { Connection, Keypair, PublicKey } from "@solana/web3.js";
 import { generateMnemonic, mnemonicToSeedSync } from "bip39";
 import { mnemonicToSeed } from "bip39";
@@ -15,6 +14,24 @@ import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
 import { ethers } from "ethers";
 import { toast, useToast } from "@/hooks/use-toast";
 import { ToastAction } from "./ui/toast";
+
+// Type definitions for wallets
+interface SolanaWallet {
+  publicKey: string;
+  privateKey: string;
+  balance: number;
+}
+
+interface EthereumWallet {
+  address: string;
+  privateKey: string;
+  balance: string;
+}
+
+// Type Guard to check if the wallet is a Solana wallet
+function isSolanaWallet(wallet: SolanaWallet | EthereumWallet): wallet is SolanaWallet {
+  return (wallet as SolanaWallet).publicKey !== undefined;
+}
 
 // Helper functions to fetch balances
 const fetchSolanaBalance = async (publicKey: string) => {
@@ -41,8 +58,8 @@ const fetchEthereumBalance = async (address: string) => {
 
 export default function WalletGenerator() {
   const [mnemonic, setMnemonic] = useState<string>("");
-  const [solanaWallets, setSolanaWallets] = useState<{ publicKey: string; privateKey: string; balance: number }[]>([]);
-  const [ethWallets, setEthWallets] = useState<{ address: string; privateKey: string; balance: string }[]>([]);
+  const [solanaWallets, setSolanaWallets] = useState<SolanaWallet[]>([]);
+  const [ethWallets, setEthWallets] = useState<EthereumWallet[]>([]);
   const [showMnemonic, setShowMnemonic] = useState<boolean>(false);
   const [showPrivateKeys, setShowPrivateKeys] = useState<boolean[]>([]);
   const [activeTab, setActiveTab] = useState<"solana" | "ethereum">("solana");
@@ -220,13 +237,13 @@ export default function WalletGenerator() {
                     <Label>{activeTab === "solana" ? "Public Key" : "Address"}</Label>
                     <div className="flex items-center gap-2">
                       <Input
-                        value={activeTab === "solana" ? wallet.publicKey : wallet.address}
+                        value={isSolanaWallet(wallet) ? wallet.publicKey : wallet.address}
                         readOnly
                       />
                       <Button
                         variant="outline"
                         onClick={() =>
-                          copyToClipboard(activeTab === "solana" ? wallet.publicKey : wallet.address)
+                          copyToClipboard(isSolanaWallet(wallet) ? wallet.publicKey : wallet.address)
                         }
                       >
                         <Clipboard className="h-4 w-4" />
@@ -253,10 +270,9 @@ export default function WalletGenerator() {
                   <div className="space-y-2">
                     <Label>Balance</Label>
                     <div className="text-xl font-semibold">
-                        {activeTab === "solana" ? wallet.balance + " SOL" : wallet.balance + " ETH"}
+                      {activeTab === "solana" ? wallet.balance + " SOL" : wallet.balance + " ETH"}
                     </div>
-                    </div>
-
+                  </div>
                 </CardContent>
                 <CardFooter className="flex justify-end">
                   <Button variant="destructive" onClick={() => deleteWallet(index)}>
